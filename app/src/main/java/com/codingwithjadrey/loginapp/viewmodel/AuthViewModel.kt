@@ -1,8 +1,12 @@
 package com.codingwithjadrey.loginapp.viewmodel
 
+import android.view.View
 import androidx.lifecycle.ViewModel
-import com.codingwithjadrey.loginapp.data.`interface`.AuthListener
+import androidx.navigation.findNavController
+import com.codingwithjadrey.loginapp.data.interf.AuthListener
 import com.codingwithjadrey.loginapp.data.repository.UserRepository
+import com.codingwithjadrey.loginapp.ui.auth.LoginFragmentDirections
+import com.codingwithjadrey.loginapp.ui.auth.SignupFragmentDirections
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -17,6 +21,18 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
     var authListener: AuthListener? = null
 
     private val disposables = CompositeDisposable()
+
+    /** navigate to signup */
+    fun goToSignup(view: View) {
+        view.findNavController()
+            .navigate(LoginFragmentDirections.actionLoginFragmentToSignupFragment())
+    }
+
+    /** navigate to login */
+    fun goToLogin(view: View) {
+        view.findNavController()
+            .navigate(SignupFragmentDirections.actionSignupFragmentToLoginFragment())
+    }
 
     /** perform the login **/
     fun login() {

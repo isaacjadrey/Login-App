@@ -1,4 +1,4 @@
-package com.codingwithjadrey.loginapp.data.`interface`
+package com.codingwithjadrey.loginapp.data.interf
 
 interface AuthListener {
     fun onStarted()
