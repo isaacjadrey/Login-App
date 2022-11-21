@@ -17,6 +17,9 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
     var email: String? = null
     var password: String? = null
 
+    /** gets the current firebase user */
+    val currentUser = repository.currentUser()
+
     /** auth listener to listen to event changes */
     var authListener: AuthListener? = null
 
